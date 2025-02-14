@@ -24,6 +24,6 @@ public class ImportedProduct extends Product {
     // sobrescrevendo o método. aplicando a lógica mais específica desse caso.
     @Override
     public String priceTag() {
-        return super.priceTag() + String.format("Customs fee: $ %.2f", this.customsFee);
+        return String.format("%s, $ %.2f (Customs fee: $ %.2f)", this.name, (this.price + customsFee), this.customsFee);
     }
 }

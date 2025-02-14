@@ -1,8 +1,12 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class UsedProduct extends Product {
+
+    private static final DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     private LocalDate manufactureDate;
 
     public UsedProduct() {
@@ -20,6 +24,7 @@ public class UsedProduct extends Product {
 
     @Override
     public String priceTag() {
-        return super.priceTag() + String.format("USED PRODUCT (Manufacture Date: %s)", this.manufactureDate);
+        return String.format("%s (used) $ %.2f (Manufacture date: %s)", this.name, this.price,
+                format.format(this.manufactureDate));
     }
 }
